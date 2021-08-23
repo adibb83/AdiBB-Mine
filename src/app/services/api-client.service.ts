@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { LoggerService } from './logger.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Pokemon, PokemonsResponse } from './pokemon-types';
+import { Pokemon, PokemonsResponse } from '@models/pokemon-types';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,6 @@ export class ApiClientService {
   public getPokemons(): Observable<Pokemon[]> {
     this.logger.info('fetching pokemons');
     return this.httpClient.get<PokemonsResponse>(`https://pokeapi.co/api/v2/pokemon?limit=${this.maxItems}`)
-                          .pipe(map(res => res.results));
+      .pipe(map(res => res.results));
   }
 }

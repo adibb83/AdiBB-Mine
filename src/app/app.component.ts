@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     private logger: LoggerService,
     private auth: AuthService,
     private poke: PokemonService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.logger.debug('init AppComponent');
