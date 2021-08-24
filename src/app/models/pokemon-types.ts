@@ -1,7 +1,7 @@
 export class PokemonsResponse {
-    results: Pokemon[];
+  results: Pokemon[];
 }
 
 export class Pokemon {
-    name: string;
+  name: string;
 }

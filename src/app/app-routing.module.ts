@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from '@pages/home/home.component';
 import { CartComponent } from '@pages/cart/cart.component';
 import { PageNotFoundComponent } from '@pages/page-not-found/page-not-found.component';
+import { AuthService } from '@services/auth.service';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
+    canActivate: [AuthService],
     component: CartComponent,
   },
   {
