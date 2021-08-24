@@ -7,6 +7,7 @@
       "@services/*": ["src/app/services/*"],
       "@pages/*":["src/app/pages/*"],
       "@models/*":["src/app/models/*"],
+      "@modules/*":["src/app/modules/*"]
     },
     "sourceMap": true,
     "declaration": false,

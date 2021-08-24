@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from '@pages/home/home.component';
+import { CartComponent } from '@pages/cart/cart.component';
+import { PageNotFoundComponent } from '@pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '', redirectTo: '/home', pathMatch: 'full'
+  },
+  {
+    path: 'home',
     component: HomeComponent,
   },
   {
+    path: 'cart',
+    component: CartComponent,
+  },
+  {
     path: '**',
-    redirectTo: '',
-    pathMatch: 'full',
+    component: PageNotFoundComponent
   },
 ];
 
@@ -18,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
