@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from '@pages/cart/cart.component';
 import { PageNotFoundComponent } from '@pages/page-not-found/page-not-found.component';
+import { PokListComponent } from '@components/pok-list/pok-list.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PageNotFoundComponent } from '@pages/page-not-found/page-not-found.comp
     HomeComponent,
     HeaderComponent,
     CartComponent,
-    PageNotFoundComponent],
+    PageNotFoundComponent,
+    PokListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

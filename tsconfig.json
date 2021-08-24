@@ -7,7 +7,8 @@
       "@services/*": ["src/app/services/*"],
       "@pages/*":["src/app/pages/*"],
       "@models/*":["src/app/models/*"],
-      "@modules/*":["src/app/modules/*"]
+      "@modules/*":["src/app/modules/*"],
+      "@components/*":["src/app/components/*"]
     },
     "sourceMap": true,
     "declaration": false,

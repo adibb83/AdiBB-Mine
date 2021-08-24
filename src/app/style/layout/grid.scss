@@ -1,0 +1,133 @@
+@import "../abstracts/mixins";
+@import "breakpoints";
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+main {
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr 9fr;
+  grid-template-areas:
+    "status status"
+    "sidebar mapContainer";
+  height: 100%;
+
+  .status-bar {
+    grid-area: status;
+    @include flex-row(space-between, center);
+    border-bottom: solid 1px gray;
+
+    .logo {
+      img {
+        width: 100%;
+        height: 100%;
+        min-width: 120px;
+        max-height: 75px;
+        align-self: center;
+        padding: 10px;
+      }
+    }
+
+    .clock-container {
+      @include flex-row(space-around, center);
+      padding: 10px;
+      margin-right: 25px;
+      min-width: 200px;
+      align-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .status {
+      @include flex-column(center, center);
+      align-content: space-around;
+    }
+  }
+
+  .left-side-bar {
+    grid-area: sidebar;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    grid-template-areas: "filter" "log";
+    height: 100%;
+    overflow: auto;
+    padding: 50px 30px 10px;
+
+    .list-filters {
+      grid-area: filter;
+      @include flex-column(center, flex-start);
+      form {
+        width: 100%;
+      }
+    }
+
+    .log-list {
+      grid-area: log;
+      overflow-y: auto;
+
+      .list-info {
+        @include flex-column(left, center);
+      }
+    }
+  }
+
+  .mapContainer {
+    position: relative;
+    grid-area: mapContainer;
+    padding: 0 10px;
+
+    .main-map-container {
+      position: relative;
+      height: 100%;
+
+      .list-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        .list-item {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+@include bp-medium-small {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 9fr;
+    grid-template-areas:
+      "status"
+      "sidebar"
+      "mapContainer";
+
+    .left-side-bar {
+      grid-template-rows: 1fr;
+      grid-template-columns: 150px 1fr;
+      grid-template-areas: "filter log";
+      overflow: unset;
+      padding: 0px 10px;
+      .log-list {
+        @include flex-row(space-between, center);
+        overflow-x: auto;
+        .location-ref {
+          min-width: 150px;
+        }
+      }
+    }
+  }
+}
+
+@include bp-small {
+  .clock-container {
+    display: none !important;
+  }
+}

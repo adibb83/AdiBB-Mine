@@ -1,5 +1,1 @@
-<p class="pokemon-list__title">Pokemons list ({{(pokemons$|async)?.length}}):</p>
-<mat-list role="list" class="pokemon-list__container">
-  <mat-list-item *ngFor="let pokemon of pokemons$|async" role="listitem" class="pokemon__item">
-    {{pokemon.name | titlecase}}</mat-list-item>
-</mat-list>
+<app-pok-list [pokemons$]="pokemons$"></app-pok-list>
