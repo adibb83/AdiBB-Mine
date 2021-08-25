@@ -7,14 +7,15 @@ import { Pokemon } from '@models/pokemon-types';
   styleUrls: ['./pok-card.component.scss'],
 })
 export class PokCardComponent implements OnInit {
-  @Input('cardData') cardData: Pokemon;
+  @Input() cardData: Pokemon;
   @Output() updateCart = new EventEmitter<Pokemon>();
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   update() {
     this.cardData.isOnCart = !this.cardData.isOnCart;
+    this.updateCart.emit(this.cardData);
   }
 }

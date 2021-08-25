@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.pokemonsSub.unsubscribe();
+    if (this.pokemonsSub) { this.pokemonsSub.unsubscribe(); }
   }
 
   ngOnInit(): void {

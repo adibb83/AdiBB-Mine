@@ -16,7 +16,7 @@ export class AuthService implements CanActivate {
     private logger: LoggerService,
     private snackBar: MatSnackBar,
     private router: Router
-  ) {}
+  ) { }
 
   public init() {
     this.logger.debug('init AuthService');
@@ -36,11 +36,12 @@ export class AuthService implements CanActivate {
     this.sub = this.isLoggedIn$.subscribe((isLogged) => {
       if (!isLogged) {
         this.snackBar.open('please Log In', 'X', { duration: 3000 });
-        this.sub.unsubscribe();
         this.router.navigate(['/home']);
       }
-    });
+    }
+    );
 
+    this.sub.unsubscribe();
     return this.isLoggedIn$;
   }
 }

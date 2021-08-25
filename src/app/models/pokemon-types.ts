@@ -7,5 +7,5 @@ export class Pokemon {
   name: string;
   power?: number;
   imgUrl?: string;
-  isOnCart: boolean = false;
+  isOnCart = false;
 }

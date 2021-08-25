@@ -10,9 +10,16 @@ import { Observable } from 'rxjs';
 })
 export class CartComponent implements OnInit {
   pokemons$!: Observable<Pokemon[]>;
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService) {
+    this.pokemonService.updateCart.subscribe(e => {
+      if (e) {
+        console.log(e);
+        this.pokemons$ = this.pokemonService.CartList$;
+      }
+    }
+    );
+  }
 
   ngOnInit(): void {
-    this.pokemons$ = this.pokemonService.getCartList();
   }
 }
