@@ -1,4 +1,4 @@
-<p class="pokemon-list__title">Pokemons list ({{(pokemons$|async)?.length}}):</p>
+
 <div class="pok-list-container">
   <app-pok-card *ngFor="let pokemon of pokemons$|async"  [cardData]="pokemon"  (updateCart)="updateCard($event)"></app-pok-card>
 </div>

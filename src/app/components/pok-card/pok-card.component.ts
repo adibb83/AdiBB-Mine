@@ -13,4 +13,8 @@ export class PokCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  update() {
+    this.cardData.isOnCart = !this.cardData.isOnCart;
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from '@models/pokemon-types';
+import { PokemonService } from '@services/pokemon/pokemon.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,11 +11,11 @@ import { Observable } from 'rxjs';
 export class PokListComponent implements OnInit {
   @Input() pokemons$!: Observable<Pokemon[]>;
 
-  constructor() {}
+  constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {}
 
-  updateCard(event) {
-    console.log(event);
+  updateCard($event) {
+    this.pokemonService.getCartList();
   }
 }

@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiClientService {
   private maxItems = 30;
-  readonly imgUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
   // API Docs: https://pokeapi.co/docs/v2#pokemon
 
@@ -40,6 +39,7 @@ export class ApiClientService {
                   id: r['id'],
                   name: r['name'],
                   imgUrl: r['sprites']['front_default'],
+                  power: r['base_experience'],
                   isOnCart: false,
                 } as Pokemon),
               []

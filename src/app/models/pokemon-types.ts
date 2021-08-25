@@ -5,6 +5,7 @@ export class PokemonsResponse {
 export class Pokemon {
   id?: number;
   name: string;
+  power?: number;
   imgUrl?: string;
   isOnCart: boolean = false;
 }
