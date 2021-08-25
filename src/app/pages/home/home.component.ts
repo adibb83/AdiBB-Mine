@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PokemonService } from '@services/pokemon.service';
+import { PokemonService } from '@services/pokemon/pokemon.service';
 import { Pokemon } from '@models/pokemon-types';
 import { Observable, Subscription } from 'rxjs';
-import { LoggerService } from '@services/logger.service';
+import { LoggerService } from '@services/logger/logger.service';
 
 @Component({
   selector: 'app-home',

@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from '@pages/cart/cart.component';
 import { PageNotFoundComponent } from '@pages/page-not-found/page-not-found.component';
 import { PokListComponent } from '@components/pok-list/pok-list.component';
+import { PokCardComponent } from './components/pok-card/pok-card.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PokListComponent } from '@components/pok-list/pok-list.component';
     HeaderComponent,
     CartComponent,
     PageNotFoundComponent,
-    PokListComponent],
+    PokListComponent,
+    PokCardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@services/auth.service';
-import { LoggerService } from '@services/logger.service';
+import { AuthService } from '@services/auth-service/auth.service';
+import { LoggerService } from '@services/logger/logger.service';
 
 @Component({
   selector: 'app-header',

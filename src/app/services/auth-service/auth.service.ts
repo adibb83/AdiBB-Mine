@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { LoggerService } from './logger.service';
+import { LoggerService } from '@services/logger/logger.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService implements CanActivate {
-
   private isLoggedIn = new BehaviorSubject<boolean>(false);
   public isLoggedIn$ = this.isLoggedIn.asObservable();
   private sub!: Subscription;
@@ -16,7 +15,8 @@ export class AuthService implements CanActivate {
   constructor(
     private logger: LoggerService,
     private snackBar: MatSnackBar,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   public init() {
     this.logger.debug('init AuthService');
@@ -33,7 +33,7 @@ export class AuthService implements CanActivate {
   }
 
   canActivate(): Observable<boolean> {
-    this.sub = this.isLoggedIn$.subscribe(isLogged => {
+    this.sub = this.isLoggedIn$.subscribe((isLogged) => {
       if (!isLogged) {
         this.snackBar.open('please Log In', 'X', { duration: 3000 });
         this.sub.unsubscribe();
@@ -43,5 +43,4 @@ export class AuthService implements CanActivate {
 
     return this.isLoggedIn$;
   }
-
 }

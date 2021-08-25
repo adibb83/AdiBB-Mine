@@ -1,0 +1,10 @@
+
+<div class="pok-card">
+  <div class="card-container">
+    <h4>{{cardData.name| titlecase}}</h4>
+    <img [src]="cardData.imgUrl" alt="{{cardData.name}}">
+  </div>
+  <button class="add-button" mat-mini-fab (click)="updateCart.emit(cardData)">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

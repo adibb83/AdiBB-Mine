@@ -3,5 +3,8 @@ export class PokemonsResponse {
 }
 
 export class Pokemon {
+  id?: number;
   name: string;
+  imgUrl?: string;
+  isOnCart: boolean = false;
 }
