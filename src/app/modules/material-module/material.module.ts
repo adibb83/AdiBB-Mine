@@ -8,6 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 const MATERIAL_IMPORTS = [
   CommonModule,
@@ -19,6 +20,7 @@ const MATERIAL_IMPORTS = [
   MatPaginatorModule,
   MatCardModule,
   MatBadgeModule,
+  MatToolbarModule,
 ];
 
 @NgModule({
