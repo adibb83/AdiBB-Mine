@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from '@pages/home/home.component';
-import { HeaderComponent } from '@pages/header/header.component';
+import { HeaderComponent } from '@components/header/header.component';
 import { MaterialModule } from '@modules/material-module/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +11,6 @@ import { CartComponent } from '@pages/cart/cart.component';
 import { PageNotFoundComponent } from '@pages/page-not-found/page-not-found.component';
 import { PokListComponent } from '@components/pok-list/pok-list.component';
 import { PokCardComponent } from './components/pok-card/pok-card.component';
-
 
 @NgModule({
   declarations: [
@@ -21,15 +20,16 @@ import { PokCardComponent } from './components/pok-card/pok-card.component';
     CartComponent,
     PageNotFoundComponent,
     PokListComponent,
-    PokCardComponent],
+    PokCardComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
