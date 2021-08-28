@@ -9,9 +9,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
 
 const MATERIAL_IMPORTS = [
   CommonModule,
+  FormsModule,
   MatButtonModule,
   MatIconModule,
   MatListModule,

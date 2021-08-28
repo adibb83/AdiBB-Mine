@@ -1,4 +1,5 @@
 
-<div class="pok-list-container">
-  <app-pok-card *ngFor="let pokemon of pokemons$|async" [canAnimate]="IsAnimated" [cardData]="pokemon"  (updateCart)="updateCard($event)"></app-pok-card>
-</div>
+  <div class="pok-list__container" >
+    <app-pok-card *ngFor="let pokemon of pokemons$|async" [enableAnimation]="enableAnimation" [cardData]="pokemon"  (updateCart)="updateCard()"></app-pok-card>
+  </div>
+

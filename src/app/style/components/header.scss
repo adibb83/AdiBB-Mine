@@ -1,0 +1,27 @@
+.header {
+  &__container {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    z-index: 999;
+  }
+
+  &__logo {
+    max-height: 4rem;
+    margin-right: 2rem;
+  }
+
+  &__item {
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    &:hover {
+      color: pink;
+    }
+  }
+
+  &__spacer {
+    flex: 1 1 auto;
+  }
+}

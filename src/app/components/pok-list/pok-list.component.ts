@@ -10,12 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class PokListComponent implements OnInit {
   @Input() pokemons$!: Observable<Pokemon[]>;
-  @Input() IsAnimated = false;
+  @Input() enableAnimation = false;
   constructor(private pokemonService: PokemonService) {}
 
   ngOnInit(): void {}
 
-  updateCard($event) {
+  updateCard() {
     this.pokemonService.updateCart.next(true);
   }
 }

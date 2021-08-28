@@ -9,7 +9,9 @@
 @import "layout/grid";
 @import "layout/breakpoints";
 
+@import "components/header";
 @import "pages/home";
+@import "components/pok-list";
 @import "components/card";
 
 @import "material/badge";

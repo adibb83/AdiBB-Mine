@@ -1,2 +1,10 @@
-<app-pok-list [pokemons$]="pokemons$" [IsAnimated]="true"></app-pok-list>
+<ng-container *ngIf="(pokemons$|async).length === 0">
+  <div class="pok-list__empty">
+    <h2>Cart Is Empty</h2>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="(pokemons$|async).length > 0">
+<app-pok-list [pokemons$]="pokemons$" [enableAnimation]="true"></app-pok-list>
+</ng-container>
 

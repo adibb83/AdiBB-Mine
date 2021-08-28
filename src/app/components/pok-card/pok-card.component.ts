@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Pokemon } from '@models/pokemon-types';
 
@@ -19,18 +19,18 @@ import { Pokemon } from '@models/pokemon-types';
     ]),
   ],
 })
-export class PokCardComponent implements OnInit {
+export class PokCardComponent {
   @Input() cardData: Pokemon;
-  @Input() canAnimate = false;
+  @Input() enableAnimation = false;
   @Output() updateCart = new EventEmitter<Pokemon>();
   showCard = true;
   constructor() {}
 
-  ngOnInit(): void {}
-
   update() {
     this.cardData.isOnCart = !this.cardData.isOnCart;
-    if (this.canAnimate) this.showCard = !this.showCard;
-    this.updateCart.emit(this.cardData);
+    if (this.enableAnimation) this.showCard = !this.showCard;
+    setTimeout(() => {
+      this.updateCart.emit(this.cardData);
+    }, 500);
   }
 }

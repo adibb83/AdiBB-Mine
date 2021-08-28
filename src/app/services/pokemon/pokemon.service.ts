@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoggerService } from '@services/logger/logger.service';
 import { ApiClientService } from '../api-client/api-client.service';
-import { Subscription, BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 import { Pokemon } from '@models/pokemon-types';
 import { map } from 'rxjs/operators';
 
@@ -13,25 +13,23 @@ export class PokemonService {
   PokemonList$ = this.pokemonList.asObservable();
   private pokemonsSub = new Subscription();
   updateCart = new BehaviorSubject<boolean>(true);
+
   constructor(
     private logger: LoggerService,
     private apiClient: ApiClientService
-  ) { }
+  ) {}
 
-  get CartList$() { return this.pokemonList.asObservable().pipe(map((m) => m.filter((f) => f.isOnCart))); }
+  get CartList$() {
+    return this.PokemonList$.pipe(map((m) => m.filter((f) => f.isOnCart)));
+  }
 
   public init() {
     this.pokemonsSub = this.apiClient.getInfo().subscribe((response) => {
       if (response !== undefined) {
-        console.log(response);
         this.pokemonList.next(response);
         this.logger.info(`Got ${response.length} pokemons`);
         this.pokemonsSub.unsubscribe();
       }
     });
-  }
-
-  getCartList(): Observable<Pokemon[]> {
-    return this.PokemonList$.pipe(map((m) => m.filter((f) => f.isOnCart)));
   }
 }
