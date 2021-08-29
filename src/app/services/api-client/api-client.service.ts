@@ -13,7 +13,6 @@ export class ApiClientService {
   private maxItems = 40;
 
   // API Docs: https://pokeapi.co/docs/v2#pokemon
-
   constructor(
     private logger: LoggerService,
     private httpClient: HttpClient) { }

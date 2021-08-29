@@ -21,11 +21,12 @@ export class PokemonService {
   get PokemonList$() {
     return this.pokemonList.asObservable();
   }
+
   get CartList$() {
     return this.PokemonList$.pipe(map((m) => m.filter((f) => f.isOnCart)));
   }
 
-  // get pokemons list from server
+  // get pokemons list id/Image from server --- global error handling
   public init() {
     this.pokemonsSub = this.apiClient.getInfo().subscribe((response) => {
       if (response !== undefined) {

@@ -1,30 +1,32 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ApiClientService } from './api-client.service';
 import { environment } from 'src/environments/environment';
-import { LoggerService } from '@services/logger/logger.service';
+import { Pokemon } from '@models/pokemon-types';
 
 describe('ApiClientService', () => {
-  let service: ApiClientService;
-  let httpMock: HttpTestingController;
+
+  let apiClientService: ApiClientService;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
+
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
-        ApiClientService,
-        LoggerService
+      imports: [
+        HttpClientTestingModule
       ],
+      providers: [
+        ApiClientService
+      ]
     });
-    service = TestBed.inject(ApiClientService);
-    httpMock = TestBed.inject(HttpTestingController);
+
+    apiClientService = TestBed.inject(ApiClientService),
+      httpTestingController = TestBed.inject(HttpTestingController);
+
   });
 
   it('api-service should be created', () => {
-    expect(service).toBeTruthy();
+    expect(apiClientService).toBeTruthy();
   });
 
   it('api-service should have apiEndpoint in Enviroment', () => {
@@ -33,27 +35,24 @@ describe('ApiClientService', () => {
   });
 
 
+  it('api-service should return an Observable of pokemon', () => {
 
-  it('api-service should return an Observable of pokemon names ', () => {
-    const dummyPokemon = {
-      name: 'bulbasaur',
-      url: 'https://pokeapi.co/api/v2/pokemon/1/'
-    };
-    service.getPokemons().subscribe(res => {
-      if (res !== undefined) {
-        expect(res['results'].length).toBeGreaterThan(0);
-        expect(res['results'][0]).toEqual(dummyPokemon);
-      }
+    apiClientService.getInfo().subscribe(pokemons => {
+
+      expect(pokemons.length).toBeGreaterThan(10, 'incorrect number of pokemons');
+      expect(pokemons).toBeTruthy('No pokemons returned');
+      const pokemon = pokemons.find(pokemon => pokemon.id === 1);
+      expect(pokemon.name).toBe('bulbasaur');
     });
 
-
-    const req = httpMock.expectOne(`${environment.pokNamesUrl}30`);
-    expect(req.request.method).toBe('GET');
-    req.flush(dummyPokemon);
+    const req = httpTestingController.expectOne(`${environment.pokNamesUrl}40`);
+    expect(req.request.method).toEqual('GET');
+    req.flush({ payload: Object.values(Pokemon) });
   });
 
   afterEach(() => {
-    httpMock.verify();
+    httpTestingController.verify();
   });
 
 });
+
