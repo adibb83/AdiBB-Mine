@@ -8,13 +8,14 @@ import { Observable } from 'rxjs';
   templateUrl: './pok-list.component.html',
   styleUrls: ['./pok-list.component.scss'],
 })
-export class PokListComponent implements OnInit {
+
+// this list of cards component was created for more reusable code
+export class PokListComponent {
   @Input() pokemons$!: Observable<Pokemon[]>;
   @Input() enableAnimation = false;
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService) { }
 
-  ngOnInit(): void {}
-
+  // card event emitter on add/remove card from cart
   updateCard() {
     this.pokemonService.updateCart.next(true);
   }

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from '@pages/home/home.component';
 import { HeaderComponent } from '@components/header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from '@pages/cart/cart.component';
 import { PageNotFoundComponent } from '@pages/page-not-found/page-not-found.component';
@@ -30,4 +30,4 @@ import { CoreModule } from './core/core.module';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

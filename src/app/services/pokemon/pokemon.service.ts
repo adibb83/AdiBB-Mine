@@ -10,19 +10,22 @@ import { map } from 'rxjs/operators';
 })
 export class PokemonService {
   private pokemonList = new BehaviorSubject<Pokemon[]>([]);
-  PokemonList$ = this.pokemonList.asObservable();
   private pokemonsSub = new Subscription();
   updateCart = new BehaviorSubject<boolean>(true);
 
   constructor(
     private logger: LoggerService,
     private apiClient: ApiClientService
-  ) {}
+  ) { }
 
+  get PokemonList$() {
+    return this.pokemonList.asObservable();
+  }
   get CartList$() {
     return this.PokemonList$.pipe(map((m) => m.filter((f) => f.isOnCart)));
   }
 
+  // get pokemons list from server
   public init() {
     this.pokemonsSub = this.apiClient.getInfo().subscribe((response) => {
       if (response !== undefined) {

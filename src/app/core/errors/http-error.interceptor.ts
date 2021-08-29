@@ -10,10 +10,13 @@ import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { LoggerService } from '@services/logger/logger.service';
 
-@Injectable()
-export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(private loggerService: LoggerService) {}
+@Injectable({
+  providedIn: 'root'
+})
 
+// global http calls error handling
+export class HttpErrorInterceptor implements HttpInterceptor {
+  constructor(private loggerService: LoggerService) { }
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler

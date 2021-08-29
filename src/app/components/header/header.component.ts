@@ -12,19 +12,20 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = this.auth.isLoggedIn$;
-  pokemons$!: Observable<Pokemon[]>;
+  pokemonsOnCart$!: Observable<Pokemon[]>;
   listSub!: Subscription;
   constructor(
     private auth: AuthService,
     private logger: LoggerService,
     private pokemonService: PokemonService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.logger.debug('init HeaderComponent');
-    this.listSub = this.pokemonService.updateCart.subscribe((e) => {
-      if (e) {
-        this.pokemons$ = this.pokemonService.CartList$;
+    // get cart items on card change -- i don't know if its the best approach for this case
+    this.listSub = this.pokemonService.updateCart.subscribe((update) => {
+      if (update) {
+        this.pokemonsOnCart$ = this.pokemonService.CartList$;
       }
     });
   }

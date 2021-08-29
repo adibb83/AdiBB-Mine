@@ -1,28 +1,9 @@
-<!-- <img [src]="'assets/logo/pokemon_logo.png'" alt="">
-<mat-nav-list class="header__container">
-  <mat-list-item class="header__item" [routerLink]="'/'">Home</mat-list-item>
-  <mat-list-item class="header__item"
-   matBadge="{{(pokemons$| async)?.length}}"
-   matBadgePosition="before"
-   matBadgeSize="medium"
-   [matBadgeHidden]="(pokemons$| async)?.length < 1"
-   [routerLink]="'/cart'">Cart</mat-list-item>
-  <mat-list-item class="header__item" *ngIf="(isLoggedIn | async) === true" href="#" (click)="logout()">Logout
-  </mat-list-item>
-  <mat-list-item class="header__item" *ngIf="(isLoggedIn | async) === false" href="#" (click)="login()">Login
-  </mat-list-item>
-</mat-nav-list> -->
-
 <mat-toolbar class="header__container" color="accent">
   <img class="header__logo" [src]="'assets/logo/pokemon_logo.png'" alt="">
   <span class="header__item" [routerLink]="'/'">Home</span>
-  <span class="header__item"
-   matBadge="{{(pokemons$| async)?.length}}"
-   matBadgeSize="medium"
-   matBadgeOverlap="true"
-   [matBadgeHidden]="(pokemons$| async)?.length < 1"
-   [routerLink]="'/cart'">Cart</span>
-   <span class="header__spacer"></span>
+  <span class="header__item" matBadge="{{(pokemonsOnCart$| async)?.length}}" matBadgeSize="medium"
+    matBadgeOverlap="true" [matBadgeHidden]="(pokemonsOnCart$| async)?.length < 1" [routerLink]="'/cart'">Cart</span>
+  <span class="header__spacer"></span>
   <span class="header__item" *ngIf="(isLoggedIn | async) === true" href="#" (click)="logout()">Logout
   </span>
   <span class="header__item" *ngIf="(isLoggedIn | async) === false" href="#" (click)="login()">Login

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { LoggerService } from '@services/logger/logger.service';
@@ -8,16 +8,16 @@ import { SnakbarModel } from '@models/snak-bar';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService implements CanActivate {
+export class AuthService implements CanActivate, OnDestroy {
   private isLoggedIn = new BehaviorSubject<boolean>(false);
   public isLoggedIn$ = this.isLoggedIn.asObservable();
-  private sub!: Subscription;
+  private loginSub!: Subscription;
 
   constructor(
     private logger: LoggerService,
     private snackBar: SnackbarService,
     private router: Router
-  ) {}
+  ) { }
 
   public init() {
     this.logger.debug('init AuthService');
@@ -34,7 +34,7 @@ export class AuthService implements CanActivate {
   }
 
   canActivate(): Observable<boolean> {
-    this.sub = this.isLoggedIn$.subscribe((isLogged) => {
+    this.loginSub = this.isLoggedIn$.subscribe((isLogged) => {
       if (!isLogged) {
         const snackMessage: SnakbarModel = {
           message: 'please Log In',
@@ -45,7 +45,11 @@ export class AuthService implements CanActivate {
       }
     });
 
-    this.sub.unsubscribe();
+    this.loginSub.unsubscribe();
     return this.isLoggedIn$;
+  }
+
+  ngOnDestroy() {
+    if (this.loginSub) { this.loginSub.unsubscribe(); }
   }
 }

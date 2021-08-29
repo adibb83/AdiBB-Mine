@@ -7,6 +7,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   &__container {
     @include flex-row(center, center);
     flex-wrap: wrap;

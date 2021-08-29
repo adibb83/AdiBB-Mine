@@ -24,11 +24,14 @@ export class PokCardComponent {
   @Input() enableAnimation = false;
   @Output() updateCart = new EventEmitter<Pokemon>();
   showCard = true;
-  constructor() {}
+  constructor() { }
 
+  // update cart list on card add/remove
   update() {
     this.cardData.isOnCart = !this.cardData.isOnCart;
-    if (this.enableAnimation) this.showCard = !this.showCard;
+    if (this.enableAnimation) { this.showCard = !this.showCard; }
+
+    // time out using for animation delay
     setTimeout(() => {
       this.updateCart.emit(this.cardData);
     }, 500);

@@ -3,19 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { LoggerService } from '@services/logger/logger.service';
 import { forkJoin, Observable } from 'rxjs';
 import { concatMap, map } from 'rxjs/operators';
-import { Pokemon, PokemonsResponse } from '@models/pokemon-types';
+import { Pokemon } from '@models/pokemon-types';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiClientService {
-  private maxItems = 30;
+  private maxItems = 40;
 
   // API Docs: https://pokeapi.co/docs/v2#pokemon
 
-  constructor(private logger: LoggerService, private httpClient: HttpClient) {}
+  constructor(
+    private logger: LoggerService,
+    private httpClient: HttpClient) { }
 
+  // get pokemons names
   public getPokemons(): Observable<any[]> {
     this.logger.info('fetching pokemons');
     return this.httpClient
@@ -23,10 +26,11 @@ export class ApiClientService {
       .pipe(map((res) => res['results']));
   }
 
-  getInfo() {
+  // convert pokemon names to pokemone data by name and create new list
+  getInfo(): Observable<Pokemon[]> {
+    this.logger.info('fetching pokemons ids/images');
     return this.getPokemons().pipe(
       concatMap((pokList) => {
-        console.log(pokList);
         return forkJoin(
           pokList.map((pok) =>
             this.httpClient.get<any>(`${environment.pokImgUrl}${pok.name}`)
