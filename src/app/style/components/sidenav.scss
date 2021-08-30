@@ -1,0 +1,21 @@
+.sidenav {
+  &__container {
+    position: absolute;
+    top: 3.5rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__menu {
+    min-width: 10rem;
+  }
+
+  &__list {
+    padding-right: 10px;
+  }
+
+  &__activeLink {
+    color: var(--color-red-4);
+  }
+}

@@ -33,6 +33,7 @@ export class AuthService implements CanActivate, OnDestroy {
     this.isLoggedIn.next(false);
   }
 
+  // pages can be accessed if the user is logged in. Otherwise display a message
   canActivate(): Observable<boolean> {
     this.loginSub = this.isLoggedIn$.subscribe((isLogged) => {
       if (!isLogged) {

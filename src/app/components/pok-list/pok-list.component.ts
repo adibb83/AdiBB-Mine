@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./pok-list.component.scss'],
 })
 
-// this list of cards component was created for more reusable code
+// This list of cards component was created for more reusable code
+// Like If we want to filter data for every list. add title, genre ....
 export class PokListComponent {
   @Input() pokemons$!: Observable<Pokemon[]>;
   @Input() enableAnimation = false;

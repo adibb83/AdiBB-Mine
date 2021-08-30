@@ -1,30 +1,35 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Pokemon } from '@models/pokemon-types';
 import { AuthService } from '@services/auth-service/auth.service';
-import { LoggerService } from '@services/logger/logger.service';
 import { PokemonService } from '@services/pokemon/pokemon.service';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: 'app-sidenav',
+  templateUrl: './sidenav.component.html',
+  styleUrls: ['./sidenav.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
-  isLoggedIn = this.auth.isLoggedIn$;
+
+// i have added sidenav for mobile ui/ux
+export class SidenavComponent implements OnInit, OnDestroy {
+
+  @Input() opened = false;
   pokemonsOnCart$!: Observable<Pokemon[]>;
   listSub!: Subscription;
-  @Output() toggleSidenav = new EventEmitter<boolean>();
+  isLoggedIn!: Observable<boolean>;
 
   constructor(
     private auth: AuthService,
-    private logger: LoggerService,
-    private pokemonService: PokemonService
-  ) { }
+    private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.logger.debug('init HeaderComponent');
-    // Get cart items on single pokemon card change
+    this.bootstrap();
+  }
+
+  private bootstrap() {
+    this.auth.init();
+    this.pokemonService.initPokemonsIdAndImage();
+    this.isLoggedIn = this.auth.isLoggedIn$;
     this.listSub = this.pokemonService.updateCart.subscribe((update) => {
       if (update) {
         this.pokemonsOnCart$ = this.pokemonService.CartList$;
@@ -38,6 +43,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logout() {
     this.auth.logout();
+  }
+
+  toggleNave() {
+    this.opened = !this.opened;
   }
 
   ngOnDestroy() {

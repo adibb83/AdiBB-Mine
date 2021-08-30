@@ -26,12 +26,12 @@ export class PokCardComponent {
   showCard = true;
   constructor() { }
 
-  // update cart list on card add/remove
+  // Update cart list on card add/remove
   update() {
     this.cardData.isOnCart = !this.cardData.isOnCart;
     if (this.enableAnimation) { this.showCard = !this.showCard; }
 
-    // time out using for animation delay
+    // Time out using for animation delay
     setTimeout(() => {
       this.updateCart.emit(this.cardData);
     }, 500);

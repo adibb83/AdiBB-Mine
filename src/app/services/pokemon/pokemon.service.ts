@@ -22,18 +22,29 @@ export class PokemonService {
     return this.pokemonList.asObservable();
   }
 
+  // There's another way we could keep a cart list.
+  // Have a separate list of products in the cart and add / remove products to the list by Id.
+  // And view it separately.
+  // In the way that exists here the code is shorter and more connected to each other without having
+  // to check which product is in which list.
   get CartList$() {
     return this.PokemonList$.pipe(map((m) => m.filter((f) => f.isOnCart)));
   }
 
-  // get pokemons list id/Image from server --- global error handling
-  public init() {
-    this.pokemonsSub = this.apiClient.getInfo().subscribe((response) => {
+  // Get pokemon's list id/Image from server --- global error handling
+  initPokemonsIdAndImage() {
+    this.pokemonsSub = this.apiClient.getPokemonsInfo().subscribe((response) => {
       if (response !== undefined) {
         this.pokemonList.next(response);
         this.logger.info(`Got ${response.length} pokemons`);
         this.pokemonsSub.unsubscribe();
       }
     });
+  }
+
+  // Option number 2 for getting pokemons list --- not active just for ref
+  async initPokemonsIdAndImageAsync() {
+    let pokemons = await this.apiClient.getPokemonsInfoAsync();
+    this.pokemonList.next(pokemons);
   }
 }

@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.pokemonsSub) { this.pokemonsSub.unsubscribe(); }
   }
 
-  // in a different approach we can use resolver to get the data
+  // In a different approach we can use resolver to get the data
   ngOnInit(): void {
     this.logger.debug('init HomeComponent');
     this.pokemons$ = this.pokemonService.PokemonList$;

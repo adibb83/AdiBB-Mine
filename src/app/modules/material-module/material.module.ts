@@ -9,10 +9,19 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { PortalModule } from '@angular/cdk/portal';
+import { A11yModule } from '@angular/cdk/a11y';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 
 const MATERIAL_IMPORTS = [
   CommonModule,
+  A11yModule,
+  ScrollingModule,
+  MatSlideToggleModule,
+  PortalModule,
   FormsModule,
   MatButtonModule,
   MatIconModule,
@@ -23,6 +32,7 @@ const MATERIAL_IMPORTS = [
   MatCardModule,
   MatBadgeModule,
   MatToolbarModule,
+  MatSidenavModule
 ];
 
 @NgModule({
@@ -30,4 +40,4 @@ const MATERIAL_IMPORTS = [
   imports: MATERIAL_IMPORTS,
   exports: MATERIAL_IMPORTS,
 })
-export class MaterialModule {}
+export class MaterialModule { }

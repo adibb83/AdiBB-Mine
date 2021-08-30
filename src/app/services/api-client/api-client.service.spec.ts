@@ -1,11 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ApiClientService } from './api-client.service';
 import { environment } from 'src/environments/environment';
-import { Pokemon } from '@models/pokemon-types';
+
+// first time that im using unit testing --- there allot more to learn :)
 
 describe('ApiClientService', () => {
-
+  let injector: TestBed;
   let apiClientService: ApiClientService;
   let httpTestingController: HttpTestingController;
 
@@ -20,8 +21,9 @@ describe('ApiClientService', () => {
       ]
     });
 
-    apiClientService = TestBed.inject(ApiClientService),
-      httpTestingController = TestBed.inject(HttpTestingController);
+    injector = getTestBed();
+    apiClientService = injector.inject(ApiClientService);
+    httpTestingController = injector.inject(HttpTestingController);
 
   });
 
@@ -35,19 +37,21 @@ describe('ApiClientService', () => {
   });
 
 
-  it('api-service should return an Observable of pokemon', () => {
+  it('api-service should return an Observable of pokemon', (done: DoneFn) => {
+    // Dummy data to be returned by request.
+    const expectedPokNames = [
+      { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
+      { name: 'ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
+    ];
 
-    apiClientService.getInfo().subscribe(pokemons => {
-
-      expect(pokemons.length).toBeGreaterThan(10, 'incorrect number of pokemons');
+    apiClientService.getPokemons().subscribe(pokemons => {
       expect(pokemons).toBeTruthy('No pokemons returned');
-      const pokemon = pokemons.find(pokemon => pokemon.id === 1);
-      expect(pokemon.name).toBe('bulbasaur');
+      done();
     });
 
     const req = httpTestingController.expectOne(`${environment.pokNamesUrl}40`);
     expect(req.request.method).toEqual('GET');
-    req.flush({ payload: Object.values(Pokemon) });
+    req.flush(expectedPokNames);
   });
 
   afterEach(() => {

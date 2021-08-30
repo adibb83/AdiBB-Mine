@@ -10,20 +10,16 @@ import { PokemonService } from '@services/pokemon/pokemon.service';
 })
 export class AppComponent implements OnInit {
   title = 'pokeshop';
-
+  sideNavOpened = false;
   constructor(
     private logger: LoggerService,
-    private auth: AuthService,
-    private poke: PokemonService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.logger.debug('init AppComponent');
-    this.bootstrap();
   }
 
-  private bootstrap() {
-    this.auth.init();
-    this.poke.init();
+  toggleSideNave() {
+    this.sideNavOpened = !this.sideNavOpened;
   }
 }

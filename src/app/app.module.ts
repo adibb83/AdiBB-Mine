@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from '@pages/cart/cart.component';
 import { PageNotFoundComponent } from '@pages/page-not-found/page-not-found.component';
 import { CoreModule } from './core/core.module';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { CoreModule } from './core/core.module';
     HeaderComponent,
     CartComponent,
     PageNotFoundComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,

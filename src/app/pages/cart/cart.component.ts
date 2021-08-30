@@ -18,9 +18,10 @@ export class CartComponent implements OnInit, OnDestroy {
     private logger: LoggerService
   ) { }
 
-  // in a different approach we can use resolver to get the data
+  // In a different approach we can use resolver to get the data
   ngOnInit(): void {
     this.logger.debug('init Cart Page');
+    // listen to changes on cart list add/remove
     this.pokemonListSub = this.pokemonService.updateCart.subscribe((update) => {
       if (update) {
         this.pokemons$ = this.pokemonService.CartList$;
