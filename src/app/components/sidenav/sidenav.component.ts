@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Pokemon } from '@models/pokemon-types';
 import { AuthService } from '@services/auth-service/auth.service';
+import { LoggerService } from '@services/logger/logger.service';
 import { PokemonService } from '@services/pokemon/pokemon.service';
 import { Observable, Subscription } from 'rxjs';
 
@@ -20,9 +21,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   constructor(
     private auth: AuthService,
-    private pokemonService: PokemonService) { }
+    private pokemonService: PokemonService,
+    private logger: LoggerService) { }
 
   ngOnInit(): void {
+    this.logger.debug('init Side Nav Container');
     this.bootstrap();
   }
 

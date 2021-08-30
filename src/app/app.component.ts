@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'pokeshop';
   sideNavOpened = false;
   constructor(
-    private logger: LoggerService,
+    private logger: LoggerService
   ) { }
 
   ngOnInit(): void {

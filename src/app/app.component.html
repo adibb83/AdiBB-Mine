@@ -1,2 +1,4 @@
-<app-header (toggleSidenav)="toggleSideNave()"></app-header>
-<app-sidenav [opened]="sideNavOpened"></app-sidenav>
+<router-outlet class="app-surface">
+  <app-header (toggleSidenav)="toggleSideNave()"></app-header>
+  <app-sidenav [opened]="sideNavOpened"></app-sidenav>
+</router-outlet>
