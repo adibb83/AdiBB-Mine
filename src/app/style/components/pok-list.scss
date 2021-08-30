@@ -11,6 +11,6 @@
   &__container {
     @include flex-row(center, center);
     flex-wrap: wrap;
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 }
