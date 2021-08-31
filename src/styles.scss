@@ -4,10 +4,13 @@
 @include mat-core();
 @import "app/style/base/mat-theme.scss";
 
-
-$mat-custom-typography-config: mat-typography-config($display-4: mat-typography-level(112px, 112px, 300, -0.05em, $heading-font-family),
-  $display-3: mat-typography-level(56px, 56px, 500, -0.02em, $heading-font-family),
-  $display-2: mat-typography-level(45px, 48px, 500, -0.005em, $heading-font-family),
+$mat-custom-typography-config: mat-typography-config(
+  $display-4:
+    mat-typography-level(112px, 112px, 300, -0.05em, $heading-font-family),
+  $display-3:
+    mat-typography-level(56px, 56px, 500, -0.02em, $heading-font-family),
+  $display-2:
+    mat-typography-level(45px, 48px, 500, -0.005em, $heading-font-family),
   $display-1: mat-typography-level(34px, 40px, 500, $heading-font-family),
   $headline: mat-typography-level(24px, 32px, 500, $heading-font-family),
   $title: mat-typography-level(22px, 32px, 500, $heading-font-family),
@@ -21,7 +24,7 @@ $mat-custom-typography-config: mat-typography-config($display-4: mat-typography-
 );
 
 $dark-primary: mat-palette($mat-blue, 500, 100, 900);
-$dark-accent: mat-palette($mat-pink, A200, A100, A400);
+$dark-accent: mat-palette($mat-purple, A200, A100, A400);
 $dark-warn: mat-palette($mat-red);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 

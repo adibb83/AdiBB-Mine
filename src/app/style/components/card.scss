@@ -1,8 +1,6 @@
 @import "../../style/abstracts/mixins";
-@import "../../style/abstracts/variables";
 
 .card {
-
   position: relative;
   width: 12rem;
   height: 15rem;
@@ -10,9 +8,11 @@
   @include flex-row(center, center);
   color: var(--color-white);
   margin: 1rem;
-  background-image: linear-gradient(35deg,
-      var(--color-yellow-light-1),
-      var(--color-blue-light-1));
+  background-image: linear-gradient(
+    35deg,
+    var(--color-orange-light-1),
+    var(--color-blue-light-1)
+  );
   border-radius: 1rem;
   border: solid 1px #c0c0c0;
   box-shadow: rgba(192, 192, 192, 0.25) 0px 6px 12px -2px,
