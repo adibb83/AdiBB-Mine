@@ -24,7 +24,7 @@ $mat-custom-typography-config: mat-typography-config(
 );
 
 $dark-primary: mat-palette($mat-blue, 500, 100, 900);
-$dark-accent: mat-palette($mat-purple, A200, A100, A400);
+$dark-accent: mat-palette($mat-purple, A700, A200, A400);
 $dark-warn: mat-palette($mat-red);
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
